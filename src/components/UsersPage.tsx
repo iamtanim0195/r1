@@ -171,6 +171,7 @@ export default function UsersPage() {
                                         <p><strong>Research:</strong> {user.professorData?.research_areas?.join(', ')}</p>
                                         <p><strong>IELTS Requirement:</strong> {user.professorData?.ielts_requirement || 'N/A'}</p>
                                         <p><strong>GRE Requirement:</strong> {user.professorData?.gre_requirement || 'N/A'}</p>
+                                        <p><strong>Accepting:</strong> {user.professorData?.isAccepting === true ? 'Yes' : user.professorData?.isAccepting === false ? 'No' : 'N/A'}</p>
                                     </>
                                 )}
                             </div>
