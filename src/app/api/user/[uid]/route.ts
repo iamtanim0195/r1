@@ -6,7 +6,7 @@ import User from '@/lib/models/User';
 // GET /api/user/:uid
 export async function GET(req: NextRequest, { params }: { params: { uid: string } }) {
     try {
-        const { uid } = params;
+        const { uid } = await params;
 
         await dbConnect();
         const user = await User.findOne({ uid });

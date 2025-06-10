@@ -1,4 +1,3 @@
-//src/app/api/auth/route.ts
 import { NextResponse } from 'next/server';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase/config';
@@ -8,7 +7,14 @@ import User from '@/lib/models/User';
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { email, password, action, name, role } = body;
+        const {
+            email,
+            password,
+            action,
+            name,
+            role,
+        } = body;
+
         await dbConnect();
 
         if (action === 'signup') {
@@ -22,6 +28,7 @@ export async function POST(request: Request) {
                     email: firebaseUser.email,
                     name,
                     role,
+                    
                 };
 
                 // Add role-specific fields

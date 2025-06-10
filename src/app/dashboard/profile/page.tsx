@@ -11,9 +11,12 @@ export default function ProfilePage() {
 
     useEffect(() => {
         if (userData) {
+            console.log("userData:", userData);
             setFormData({
                 name: userData.name || '',
                 role: userData.role || 'student',
+                country: userData.country || '',
+                department: userData.department || '',
                 studentData: userData.studentData || {
                     research_areas: [],
                     ielts_score: '',
@@ -92,6 +95,7 @@ export default function ProfilePage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log("Submitting:", formData);
         setLoading(true);
 
         try {
@@ -130,6 +134,7 @@ export default function ProfilePage() {
                     <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        {/* Name Field */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
                             <input
@@ -142,6 +147,7 @@ export default function ProfilePage() {
                             />
                         </div>
 
+                        {/* Role Field */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
                             <select
@@ -154,8 +160,33 @@ export default function ProfilePage() {
                                 <option value="professor">Professor</option>
                             </select>
                         </div>
+
+                        {/* Country Field */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                            <input
+                                type="text"
+                                name="country"
+                                value={formData.country || ''}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+
+                        {/* Department Field */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                            <input
+                                type="text"
+                                name="department"
+                                value={formData.department || ''}
+                                onChange={handleChange}
+                                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
                     </div>
                 </div>
+
 
                 {formData.role === 'student' && (
                     <div className="mb-6">

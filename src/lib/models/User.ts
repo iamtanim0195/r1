@@ -5,6 +5,8 @@ export interface IUser extends Document {
     email: string;
     role: 'student' | 'professor';
     name: string;
+    country: string;
+    department: string;
     studentData?: {
         research_areas: string[];
         ielts_score?: number;
@@ -25,6 +27,8 @@ const UserSchema = new Schema<IUser>({
     email: { type: String, required: true, unique: true },
     role: { type: String, enum: ['student', 'professor'], required: true },
     name: { type: String, required: true },
+    country: { type: String, required: true },
+    department: { type: String, required: true },
     studentData: {
         research_areas: { type: [String], default: [] },
         ielts_score: Number,

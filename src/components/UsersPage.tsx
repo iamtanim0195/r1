@@ -7,6 +7,8 @@ interface User {
     uid: string;
     name: string;
     email: string;
+    department: string;
+    country: string;
     role: 'student' | 'professor';
     studentData?: {
         research_areas: string[];
@@ -156,6 +158,8 @@ export default function UsersPage() {
                         <div key={user.uid} className="text-black border p-4 rounded shadow-sm bg-white">
                             <h2 className="text-xl font-semibold">{user.name}</h2>
                             <p className="text-sm text-gray-600">{user.email}</p>
+                            <p><strong>Country:</strong> {user.country || 'N/A'}</p>
+                            <p><strong>Department:</strong> {user.department || 'N/A'}</p>
                             <div className="mt-2 text-sm">
                                 <p><strong>Role:</strong> {user.role}</p>
                                 {user.role === 'student' && (
